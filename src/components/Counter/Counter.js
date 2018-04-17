@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {createStore} from '../../redux';
+import {createStore} from 'redux';
 
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
