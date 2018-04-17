@@ -3,7 +3,7 @@ const initState = { list: [] };
 
 
 let reducer = (state = initState, action) => {
-  // 处理首次没有传递action的情况
+  // 没有传递action的情况,返回老的state
   if (action === undefined) return state;
 
   switch (action.type) {
