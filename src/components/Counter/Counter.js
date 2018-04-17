@@ -1,27 +1,7 @@
 import React, { Component } from 'react';
-import {createStore} from 'redux';
+import {store} from '../../store';
+import { INCREASE, DECREASE } from '../../reducers/actiontypes';
 
-const INCREASE = 'INCREASE';
-const DECREASE = 'DECREASE';
-
-let reducer = (state = { number: 0 }, action) => {
-  if (action === undefined) return state;
-
-  switch (action.type) {
-    case INCREASE:
-      return { number: state.number + action.amount };
-      break;
-    case DECREASE:
-      return { number: state.number - action.amount };
-      break;
-    default:
-      return state;
-  }
-};
-
-let store = createStore(reducer);
-
-// Action Creators创建action的函数；转发action给store,更新state tree
 let increase = (amount) => (
   { type: INCREASE, amount }
 )
@@ -35,14 +15,14 @@ export default class Counter extends Component {
   constructor() {
     super();
     this.state = {
-      number: store.getState().number
+      number: store.getState().counter.number
     }
   }
   componentWillMount() {
     // 组件加载时订阅发布；
     this.unsubscribe = store.subscribe(() => {
       this.setState({
-        number: store.getState().number
+        number: store.getState().counter.number
       })
     })
   }
