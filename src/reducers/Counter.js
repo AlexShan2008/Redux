@@ -7,10 +7,10 @@ let reducer = (state = { number: 0 }, action) => {
 
   switch (action.type) {
     case INCREASE:
-      return { number: state.number + action.amount };
+      return { number: state.number + (action.amount || 1 )};
       break;
     case DECREASE:
-      return { number: state.number - action.amount };
+      return { number: state.number - (action.amount || 1) };
       break;
     default:
       return state;
